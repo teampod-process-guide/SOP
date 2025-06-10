@@ -1,0 +1,235 @@
+:root {
+  --bg-color: #ffffff;           /* pure white background */
+  --text-color: #1e293b;         /* dark slate blue */
+  --border-color: #cbd5e1;       /* pale blue-gray */
+  --hover-bg: #dbeafe;           /* very light powder blue */
+  --hover-text: #1e293b;         /* dark slate text */
+  --input-bg: #f0f9ff;           /* ultra pale blue */
+  --input-border: #93c5fd;       /* soft light blue border */
+  --scrollbar-thumb: #60a5fa;    /* medium light blue */
+  --scrollbar-track: #eff6ff;    /* very light blue */
+  --active-text: #ffffff;         /* white */
+  --active-bg: #0b51b7;           /* vibrant light blue */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.sidebar {
+    min-width: 300px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    padding: 20px 0;
+}
+
+.sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    margin: 0 0 20px;
+    color: var(--text-color);
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-top: 50px;
+}
+
+.nav-links li {
+    margin-bottom: 5px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+    transition: background-color 0.2s ease;
+    font-size: 15px;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+    outline: none;
+
+}
+.active {
+    background-color: var(--active-bg);
+    color: var(--active-text) !important;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.content h1 {
+    font-size: 28px;
+    margin-top: 0;
+}
+
+.content section {
+    margin-bottom: 40px;
+}
+
+.content h2 {
+    font-size: 22px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+}
+
+.content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+}
+
+.content img {
+    max-width: 100%;
+    margin-top: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+}
+
+/* Webkit Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb);
+}
+
+/* Firefox Scrollbars */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0 10px;
+        padding-top: 50px;
+    }
+
+    .nav-links li {
+        margin: 0 10px;
+    }
+
+    .search-box {
+        flex: 1;
+        padding: 10px;
+        max-width: 300px;
+    }
+}
+
+section h2::before,
+section p::before {
+    content: "";
+    display: block;
+    height: 20px;
+    margin-top: -20px;
+    visibility: hidden;
+}
+
+.search-box {
+    width: 90%;
+    margin: auto;
+    background-color: var(--bg-color);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    position: fixed;
+    width: 270px;
+    left: 1%;
+
+}
+
+/* Search Input */
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+}
+
+/* Suggestion Box */
+.suggestions {
+    background-color: var(--bg-color);
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-top: 5px;
+}
+
+/* Show when active */
+.search-box.active .suggestions {
+    display: block;
+}
+
+/* Suggestion Items */
+.suggestions li {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.suggestions li:hover {
+    background-color: var(--hover-bg);
+    color: var(--hover-text);
+}
